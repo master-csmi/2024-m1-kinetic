@@ -5,3 +5,7 @@ report.log
 report.pdf
 report.synctex.gz
 report.toc
+report.bbl
+report.bcf
+report.blg
+report.run.xml
