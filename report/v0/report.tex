@@ -1,8 +1,6 @@
 \documentclass{article}
 \usepackage{stmaryrd}
-\usepackage{biblatex}
 \usepackage{graphicx}
-\addbibresource{report.bib}
 
 \title{Report, Kinetic project}
 \author{Dorian Geraldes Pereira, Axel Demuth}
@@ -15,10 +13,6 @@
 \section{Objectives}
 the objective of the project is to process files in IFC format containing building meshes that are not hermetic in an algorithms repairing
 geometric error in a kinetic data structures
-we can see here an example of what the algorithms is capable of :
-
-
-\newpage
 \section{Tools}
 \subsection{CGAL}
 CGAL is a package for geometry algorithms,offering differents data structure and algorithms
@@ -27,6 +21,9 @@ to work on polygons,surface,mesh generation...
 Kinetic algorithms is a package from CGAL, he permit to work on mesh with some hole in it .
 When applied on the mesh the Kinetic algorithms will 'prolonger' some surface to fill the mesh to make it 
 waterproof.
+we can see here what the algorithm is capable of :
+\includegraphics[scale =   0.3 ]{../../images/example_algorithm.png}
 \nocite{*}
-\printbibliography{} 
+\bibliographystyle{plain}
+\bibliography{../../bibliography/v0/report_bib}
 \end{document}
