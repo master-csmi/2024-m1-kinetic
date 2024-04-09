@@ -16,4 +16,18 @@ trouve dans points_set_3 include IO.h
                                                                                                                                                                                                                    
   \return `true` if the reading was successful, `false` otherwise. 
 
-  pour inclure le code KSR git "submodule"  rechercher la vrai commande 
+  pour inclure le code KSR git "submodule"  rechercher la vrai commande , lien vers le COMMIT sur lequel on travail
+
+  -I cgal/Kinetic_.../..../include dans le CMAKE
+
+  requirement.txt --boost 1.66 or later
+                  
+                  --Eigen3 3.1.0 REQUIRED
+                  
+                  --GMP Version 4.2 or later, MPFR Version 2.2.1 or later
+
+                  The components libCGAL, libCGAL_Core, and libCGAL_Qt5 require GMP and MPFR which are libraries for multi precision integers and rational numbers, and for multi precision floating point numbers.
+
+                  CGAL combines floating point arithmetic with exact arithmetic in order to be efficient and reliable. CGAL has a built-in number type for that, but GMP and MPFR provide a faster solution, and we recommend using them.
+
+                  These libraries can be obtained from https://gmplib.org/ and https://www.mpfr.org/. Since Visual C++ is not properly supported by the GMP and MPFR projects, we provide precompiled versions of GMP and MPFR, which can be downloaded from the assets of a release.
