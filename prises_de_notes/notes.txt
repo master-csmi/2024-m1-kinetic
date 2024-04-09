@@ -1,5 +1,5 @@
 Format nuages de points pour points_3 ( points 3D ? )
-trouve dans points_set_3 include IO.h                                                                                                                                                                    
+trouve dans points_set_3 include IO.h         read ascii or binary                                                                                                                                                  
   - \ref IOStreamOFF (`.off`)                                                                                                                                                                                      
   - \ref IOStreamPLY (`.ply`)                                                                                                                                                                                      
   - \ref IOStreamLAS (`.las`)                                                                                                                                                                                      
