@@ -31,3 +31,6 @@ trouve dans points_set_3 include IO.h
                   CGAL combines floating point arithmetic with exact arithmetic in order to be efficient and reliable. CGAL has a built-in number type for that, but GMP and MPFR provide a faster solution, and we recommend using them.
 
                   These libraries can be obtained from https://gmplib.org/ and https://www.mpfr.org/. Since Visual C++ is not properly supported by the GMP and MPFR projects, we provide precompiled versions of GMP and MPFR, which can be downloaded from the assets of a release.
+
+
+                  -- Qt5 Version 5.9.0 or later
