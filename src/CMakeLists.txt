@@ -9,18 +9,24 @@ target_link_libraries(
 
           )
 
-target_include_directories(kinetic PUBLIC
-  ${CMAKE_SOURCE_DIR}/cgal/Kinetic_surface_reconstruction/include
-  ${CMAKE_SOURCE_DIR}/cgal/Installation/include
-  ${CMAKE_SOURCE_DIR}/cgal/STL_Extension/include
-  ${CMAKE_SOURCE_DIR}/cgal/Kinetic_space_partition/include
-  ${CMAKE_SOURCE_DIR}/cgal/BGL/include/
-  ${CMAKE_SOURCE_DIR}/cgal/Kernel_23/include
-  ${CMAKE_SOURCE_DIR}/cgal/Profiling_tools/include/
-  ${CMAKE_SOURCE_DIR}/cgal/Stream_support/include
-  ${CMAKE_SOURCE_DIR}/cgal/Number_types/include
-  ${CMAKE_SOURCE_DIR}/cgal/Algebraic_foundations/include
-  ${CMAKE_SOURCE_DIR}/cgal/Interval_support/include
-  ${CMAKE_SOURCE_DIR}/cgal/Modular_arithmetic/include
-  ${CMAKE_SOURCE_DIR}/cgal/Property_map/include
-)
+
+# Ensure that the CGAL directory is set and exists
+set(CGAL_DIR "${CMAKE_SOURCE_DIR}/cgal")
+
+if(NOT EXISTS "${CGAL_DIR}")
+  message(FATAL_ERROR "CGAL directory not found: ${CGAL_DIR}")
+endif()
+
+# look in ${CMAKE_SOURCE_DIR}/cgal and check all subdirectories if a subfolder is called include
+# if yes than add it to the list
+file(GLOB children RELATIVE "${CGAL_DIR}" "${CGAL_DIR}/*")
+
+foreach(child ${children})
+  set(dir "${CGAL_DIR}/${child}")
+
+  if(IS_DIRECTORY "${dir}")
+    if(EXISTS "${dir}/include")
+      target_include_directories(kinetic PRIVATE "${dir}/include")
+    endif()
+  endif()
+endforeach()
