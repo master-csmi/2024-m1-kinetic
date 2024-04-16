@@ -25,3 +25,5 @@ presentation.synctex(busy)
 presentation/v0/presentation.bbl
 presentation/v0/presentation.blg
 parameters.ksr
+detected*.ply
+regularized*.ply
