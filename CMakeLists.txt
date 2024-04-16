@@ -15,12 +15,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
   endif()
 endif()
 
- add_executable(kinetic main.cpp)
- target_include_directories(kinetic PUBLIC 
-     ${CMAKE_SOURCE_DIR}/cgal/Kinetic_surface_reconstruction/include
-     ${CMAKE_SOURCE_DIR}/cgal/Installation/include
-     )
-
 add_library(project_warnings INTERFACE)
 
 # enable cache system
@@ -46,11 +40,13 @@ option(ENABLE_TESTING "Enable Test Builds" ON)
 set(CONAN_EXTRA_REQUIRES "")
 set(CONAN_EXTRA_OPTIONS "")
 set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} eigen/3.4.0)
-set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} boost/1.84.0)
-set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} qt/6.7.0)
+#set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} boost/1.84.0)
+#set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} qt/6.7.0)
 set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} gmp/6.3.0)
 set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} mpfr/4.2.1)
 set(tools.system.package_manager:mode=install)
 run_conan()
+find_package(Boost REQUIRED)
+Find_Package(Qt6 COMPONENTS Core Gui Help OpenGL OpenGLWidgets Qml Svg Widgets WebSockets Network  REQUIRED)
 
 add_subdirectory(src)

@@ -16,10 +16,11 @@
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/default/install/",
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_VERBOSE_MAKEFILE": "ON"
             },
             "environment": {
-                "MY_ENVIRONMENT_VARIABLE": "Test"
+                "Qt6_DIR": "/opt/Qt/6.6.1/gcc_64"
             },
             "vendor": {
                 "example.com/ExampleIDE/1.0": {
