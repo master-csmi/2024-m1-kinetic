@@ -8,7 +8,7 @@ Dorian : Geraldes Pereira Dorian
 
 ## Compilation of the project :
 
-to compile the project you need to have boost already installed 
+
 
 to compile the project you need to do the following step :
 ```
@@ -20,6 +20,10 @@ source .venv/bin/activate
 
 # instal conan 
 pip3 install -r requirements.txt
+
+#For this project Boost libraries need to be installed :
+#if its not already intalled you need to do it before the cmake configuration 
+
 
 #configure cmake
 
