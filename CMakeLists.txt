@@ -49,6 +49,6 @@ set(CONAN_EXTRA_REQUIRES ${CONAN_EXTRA_REQUIRES} mpfr/4.2.1)
 set(tools.system.package_manager:mode=install)
 run_conan()
 find_package(Boost REQUIRED)
-Find_Package(Qt6 COMPONENTS Core Gui Help OpenGL OpenGLWidgets Qml Svg Widgets WebSockets Network  REQUIRED)
+#Find_Package(Qt6 COMPONENTS Core Gui Help OpenGL OpenGLWidgets Qml Svg Widgets WebSockets Network  REQUIRED)
 
 add_subdirectory(src)
