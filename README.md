@@ -33,3 +33,18 @@ cmake --preset default
 
 cmake --build --preset default
 ```
+## Execution of the project :
+the different parameters important to change are :
+-data 
+-dist 
+-minp 
+
+to execute the project you can use 
+```
+./build/default/bin/kinetic 
+
+# an exemple with parameters
+
+./build/default/bin/kinetic -data data/flame.ply -dist 0.3 -minp 50 -regangle 5
+
+```
