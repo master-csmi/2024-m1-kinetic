@@ -61,8 +61,11 @@ Here's what the algorithm is capable of:
 To utilize the algorithm, we employ one from CGAL. Given a set of parameters and a file containing a point cloud along with the associated normals to the points,
 the algorithm is applied. We were fortunate to have a meeting with Florent Lafarge, one of the creators of the algorithm,
 who explained to us which parameters are crucial for analysis and how each one can significantly influence the results.
-Two parameters stand out as particularly important: 'dist' and 'pmin.' 'Pmin' represents the number of points used to construct a plane, 
-while 'dist' indicates the distance between two points required to consider them for plane construction.
+Two parameters stand out as particularly important: 
+\begin{itemize}
+    \item 'dist' indicates the distance between two points required to consider them for plane construction.
+    \item 'pmin' represents the number of points used to construct a plane.
+\end{itemize}
 
 In order to understand how these parameters affect the outcome, we will examine the same point cloud while varying the value of 'pmin' first and then varying 'dist.'
 The algorithm produces .off files as output, which can be visualized using software such as MeshLab.
@@ -145,13 +148,14 @@ The original point cloud represents this building:
   \end{figure}
 
 
-  When considering the 'dist' parameter, if it is set too high, we risk losing significant structural details. 
-  In the opposite, if the distance is too small, surfaces may be divided into too many planes, potentially resulting in an incomplete coverage of the entire mesh, 
-  as observed at the rear of the building with a 'dist' of 0.001.
-
-  One of the challenges in studying this algorithm is determining the appropriate 'qmin' and 'dist' to achieve the desired number of space partitions.
-  Setting it too high may enhance precision but extend execution time, and in some cases, incorrect values can lead to program crashes.
-
+When considering the 'dist' parameter, if it is set too high, we risk losing significant structural details. 
+In the opposite, if the distance is too small, surfaces may be divided into too many planes, potentially resulting in an incomplete coverage of the entire mesh, 
+as observed at the rear of the building with a 'dist' of 0.001.
+\newline
+One of the challenges in studying this algorithm is determining the appropriate 'qmin' and 'dist' to achieve the desired number of space partitions.
+Setting it too high may enhance precision but extend execution time, and in some cases, incorrect values can lead to program crashes.
+\newline
+\newline
 This algorithm could be a crucial tool in our project, particularly when dealing with massive meshes for large buildings,
 hospitals, etc. When creating large meshes, issues can arise, and errors within the mesh can be detrimental during simulations,potentially leading to false results. 
 This algorithm allows us to rectify such mesh problems.
