@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{stmaryrd}
 \usepackage{graphicx}
+\usepackage{float}
 
 \title{Report, Kinetic project}
 \author{Dorian Geraldes Pereira, Axel Demuth}
@@ -57,49 +58,111 @@ Here's what the algorithm is capable of:
 
 \end{figure}
 
-texte v1 : 
-To use the algortihm we are using an algortihm from CGAL, when given a bunch of parameter and a files with a scatter plot and the normal associated to the point.
-We had the chance to have a meeting with Florent Lafarge one of the creator of the algorithm,and he explain to us what parameter are important to analyse 
-and which one gonna have a huge influence on the results.
-There are 2 important parameter: distance and qmin here an example with both parameter varying:
+To utilize the algorithm, we employ one from CGAL. Given a set of parameters and a file containing a point cloud along with the associated normals to the points,
+the algorithm is applied. We were fortunate to have a meeting with Florent Lafarge, one of the creators of the algorithm,
+who explained to us which parameters are crucial for analysis and how each one can significantly influence the results.
+Two parameters stand out as particularly important: 'dist' and 'pmin.' 'Pmin' represents the number of points used to construct a plane, 
+while 'dist' indicates the distance between two points required to consider them for plane construction.
 
-\begin{figure}[h]
+In order to understand how these parameters affect the outcome, we will examine the same point cloud while varying the value of 'pmin' first and then varying 'dist.'
+The algorithm produces .off files as output, which can be visualized using software such as MeshLab.
+
+\newpage
+The original point cloud represents this building:
+\vspace{\baselineskip}
+
+\begin{center}
+    \includegraphics[scale=0.20]{../images/screen_kinetic/building.png} 
+\end{center}
+
+
+
+\begin{figure}[H]
     \centering
-    \begin{minipage}[b]{0.4\textwidth}
+    \begin{minipage}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{../images/screen_kinetic/dist1_pmin220.png}
-      \caption{Image 1}
-      \label{fig:image1}
+      \caption{dist1\_pmin220}
+      \label{fig:dist1_pmin220}
     \end{minipage}
     \hfill
-    \begin{minipage}[b]{0.4\textwidth}
+    \begin{minipage}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{../images/screen_kinetic/dist1_pmin250.png}
-      \caption{Image 2}
-      \label{fig:image2}
+      \caption{dist1\_pmin250}
+      \label{fig:dist1_pmin250}
     \end{minipage}
     \hfill
-    \begin{minipage}[b]{0.4\textwidth}
+    \begin{minipage}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{../images/screen_kinetic/dist1_pmin280.png}
-      \caption{Image 3}
-      \label{fig:image3}
+      \caption{dist1\_pmin280}
+      \label{fig:dist1_pmin280}
     \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+
+        \includegraphics[width=\textwidth]{../images/screen_kinetic/dist1_pmin300.png}
+        \caption{dist1\_pmin300}
+        \label{fig:dist1_pmin300}
+      \end{minipage}
   \end{figure}
   
-  \end{document}
-
-include exemple de building avec les parametres qui varie 
-
-
-One of the difficulty of studying this algorithm is judging the good qmin to get the good number of partition of the space, if u put it too big it will be more precise 
-but it will take longer to  execute, and in some case bad values can make the program to crash.
-
-(pas sur d'ecrire la phrase qui suit )
-We could also take a look about the Kinetic Surface reperation Software from the INRIA titane team,to an easier application of scatter plot,With new function as refine the first partition to make it smoother or fitting better the geometric
+  First, it's important to understand that setting 'pmin' too low can lead to errors. Subsequently,if 'pmin' is too small, we may not capture enough structural detail,
+  whereas setting 'pmin' too high may cause planes to overlap, resulting in loss of information
 
 
-(pourquoi on veut cet algo)
-This algorithm could be a primordial tool in our project when having massive mesh for a huge building, an hospital,..., When we create huge mesh there can be some probleme in it, and for simulation this can be fatal error 
-when trying to calculate something on the mesh leading to false result.With this algorithm allow us to fix the mesh.Another problem is the iput of the algorithm, only working for now ith scatter plot, so we cannot use the IFC format
-loosing all information about what type of structures we have.To counter that we gonna try to do something like IFC --> scatterplot with data  -- > plt,ply,xyz.. format susported by kinetic CGAL and data  --> mesh with data 
+
+  \begin{figure}[H]
+    \centering
+    \begin{minipage}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{../images/screen_kinetic/dist1_5_pmin_250.png}
+      \caption{dist15\_pmin250.png}
+      \label{fig:dist15_pmin220}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{../images/screen_kinetic/dist1_pmin250.png}
+      \caption{dist1\_pmin250}
+      \label{fig:dist1_pmin250}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{../images/screen_kinetic/dist_0_3_pmin_250.png}
+      \caption{dist03\_pmin250}
+      \label{fig:dist03_pmin250}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+
+        \includegraphics[width=\textwidth]{../images/screen_kinetic/dist_001_pmin_250.png}
+        \caption{dist001\_pmin250}
+        \label{fig:dist1_pmin300}
+      \end{minipage}
+    \begin{minipage}[b]{0.45\textwidth}
+
+        \includegraphics[width=\textwidth]{../images/screen_kinetic/back_dist001_pmin250.png}
+        \caption{dist001\_pmin250}
+        \label{fig:dist1_pmin300}
+      \end{minipage}
+  \end{figure}
+
+
+  When considering the 'dist' parameter, if it is set too high, we risk losing significant structural details. 
+  In the opposite, if the distance is too small, surfaces may be divided into too many planes, potentially resulting in an incomplete coverage of the entire mesh, 
+  as observed at the rear of the building with a 'dist' of 0.001.
+
+  One of the challenges in studying this algorithm is determining the appropriate 'qmin' and 'dist' to achieve the desired number of space partitions.
+  Setting it too high may enhance precision but extend execution time, and in some cases, incorrect values can lead to program crashes.
+
+This algorithm could be a crucial tool in our project, particularly when dealing with massive meshes for large buildings,
+hospitals, etc. When creating large meshes, issues can arise, and errors within the mesh can be detrimental during simulations,potentially leading to false results. 
+This algorithm allows us to rectify such mesh problems.
+
+One limitation of the algorithm is its input requirement, as it currently only works with scatter plots. Consequently, we are unable to utilize the IFC format, 
+resulting in the loss of valuable information regarding the types of structures present. To address this limitation, 
+we plan to implement a process involving the conversion of IFC to scatter plot with associated data, followed by conversion to formats such as .plt, .ply, .xyz,
+which are supported by Kinetic CGAL, ultimately resulting in a mesh with associated data.
+
+
+\news
 
 
 \subsection{Roadmap}
