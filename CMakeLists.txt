@@ -50,7 +50,4 @@ set(tools.system.package_manager:mode=install)
 #set(Boost_NO_BOOST_CMAKE TRUE)
 find_package(Boost REQUIRED)
 run_conan()
-
-#Find_Package(Qt6 COMPONENTS Core Gui Help OpenGL OpenGLWidgets Qml Svg Widgets WebSockets Network  REQUIRED)
-
 add_subdirectory(src)
