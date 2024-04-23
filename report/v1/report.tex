@@ -69,18 +69,54 @@ using the Kinetic algorithm to facilitate finite element calculations.\newline
 \subsection{CGAL}
 CGAL is a comprehensive package for geometry algorithms, providing various data structures and algorithms for working on polygons, surfaces, mesh generation, and more.
 It offers a wide range of functionalities for geometric processing and analysis in various fields such as computer graphics, computational geometry, and geometric modeling.
+\subsection{IFC project}
+The initiave was create by buildingSMART(BIM),which goal are to support portability between software in
+construction sector.IFC is a file format to replace a framented information systeme to a normalise
+one.So every actor in the sector can use IFC compatible software to open file and modelise what's within
+and don't need to waste time and calcul time to traduct from a format to one they support.
+IFC format is a base object oriented code, with a lot of class associated to any type of needs, like 
+construction site, tools, materials.
+The probleme we have is it's hard to read IFC object to use them in Kinetic program.
+They are bunch of software already traducting IFC to the format we want, but we loose lot of information.
+We will need to work on the object we receive from the traduction to make Kinetic algorithms to read the files.
+
 \subsection{Kinetic}
 
 Kinetic algorithms is a package from CGAL that allows working on meshes with some holes in them. When applied to the mesh, the Kinetic algorithms will 'extend' some surfaces to fill the mesh and make it watertight. 
 Here's what the algorithm is capable of:
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     
 \includegraphics[scale =   0.3 ]{../../images/example_algorithm.png}
 
 \end{figure}
 
+We can get a good description about How it's work in general with the report from INRIA 
+\cite{yu:hal-03621896}
+
+\begin{itemize}
+  \item It's use geometric primitives to create planes because
+   of it's relevance for human made environnements
+  \item There are multiple methode to do plan fifting in a 3D modele as Neural Network archictectures or Energy bases Models 
+  The algorithm use the second one.
+  \item To calculate the quality of a primitive configuration x with and an energy U of the format
+  \newline 
+  $ U(x) = w_f U_f(x) + w_s U_c(x) + w_c U_c(x)$
+  \newline
+   where all U function are for fidelity,simplicity and completeness of the function and all w are positive watertight
+  \item Them it use geometric operation like merging,splitting,transfer,insertion and exclusion on differents planes and 
+        close primitive.
+\end{itemize}
+
+Here we have a speudo code about how the exploration of the set of primitives works 
+\begin{center}
+  \includegraphics[scale =  0.5]{../../images/Pseudo_code_exploration.png}
+\end{center}
+The priorrity queue is the set  of primitives which we apply the geometric application on.
+
+To utilize the algorithm, we employ one from CGAL. Given a set of parameters and a file containing a point cloud along
+ with the associated normals to the points,
 
 To utilize the algorithm, we employ one from CGAL. Given a set of parameters and a file containing a point cloud along with the associated normals to the points,
 the algorithm is applied. We were fortunate to have a meeting with Florent Lafarge, one of the creators of the algorithm,
