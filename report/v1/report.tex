@@ -17,7 +17,7 @@ Our project is part of a larger initiative aimed at processing
 IFC files representing buildings to create 3D models for energy 
 simulations with high-performance calculations. Within this project, there is a need to 
 complete missing data in the IFC file to enable simulations 
-of energy consumption, losses, or even compliance estimation.
+of energy consumption and losses.
 
 \section{Project Objective}
 
@@ -32,7 +32,7 @@ The specific steps to be undertaken are as follows:
 \begin{enumerate}   
     \item \textbf{Reading Process or Mesh Conversion :} From the IFC files we will have a 
     conversion in the stl or msh format,we will need to change the reading process to be able 
-    to read mesh from those format if possible if we cant then we will convert the STL 
+    to read mesh from those format if possible,if we cant then we will convert the STL 
     or MSH meshes into one of the formats accepted by the Kinetic algorithm, 
     such as .ply, .xyz, .las, .off.
     
@@ -117,7 +117,7 @@ We can obtain a comprehensive understanding of how it works in general from the 
 \end{center}
 The priority queue represents the set of primitives to which we apply geometric applications.
 
-To utilize the algorithm, we employ one from CGAL. Given a set of parameters and a file containing a point cloud along with the associated normals to the points,
+To use the algorithm, we employ one from CGAL. Given a set of parameters and a file containing a point cloud along with the associated normals to the points,
 the algorithm is applied. We were fortunate to have a meeting with Florent Lafarge, one of the creators of the algorithm,
 who explained to us which parameters are crucial for analysis and how each one can significantly influence the results.
 Two parameters stand out as particularly important: 
@@ -279,8 +279,7 @@ For better visual understanding, three images are provided below:
     of the algorithms on real models of buildings and cities.
     
 \section{Roadmap}
-As of now, we have work to do in order to utilize the Kinetic algorithm in our environment 
-and understand how to apply it correctly. In the following, we will need to work on the following points:
+At this point those are the main Issues that we will need to work on:
 \begin{itemize}
   
   \item Change the reading process to accept stl or msh format file or if its not possible
@@ -291,7 +290,7 @@ and understand how to apply it correctly. In the following, we will need to work
   \item Investigate the feasibility of applying the algorithm on a larger scale, such as a city or a large building, instead of a basic one.
 \end{itemize}
 
-for the V1 we modified and completed some issues :
+For the V1 we modified and completed some issues :
 \begin{itemize}
   \item The Issues Create watertight mesh with kinetic we completed what we wanted to do with this issue but now we want to go further so we modified it 
   to create watertight mesh from files coming to IFC format for the V2
