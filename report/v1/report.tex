@@ -99,8 +99,6 @@ Here's what the algorithm is capable of:
 
 \end{figure}
 
-We can get a good description about How it's work in general with the report from INRIA 
-\cite{yu:hal-03621896}
 We can obtain a comprehensive understanding of how it works in general from the report by INRIA \cite{yu:hal-03621896}.
 
 \begin{itemize}
@@ -112,15 +110,12 @@ We can obtain a comprehensive understanding of how it works in general from the 
   \newline
   where all U functions pertain to fidelity, simplicity, and completeness, and all w are positive and weight.
   \item It then utilizes geometric operations such as merging, splitting, transfer, insertion, and exclusion on different planes and closed primitives.
-
+\end{itemize}
   Here, we present pseudocode detailing how the exploration of the set of primitives works:
 \begin{center}
   \includegraphics[scale =  0.5]{../../images/Pseudo_code_exploration.png}
 \end{center}
 The priority queue represents the set of primitives to which we apply geometric applications.
-
-To utilize the algorithm, we employ one from CGAL. Given a set of parameters and a file containing a point cloud along
- with the associated normals to the points,
 
 To utilize the algorithm, we employ one from CGAL. Given a set of parameters and a file containing a point cloud along with the associated normals to the points,
 the algorithm is applied. We were fortunate to have a meeting with Florent Lafarge, one of the creators of the algorithm,
