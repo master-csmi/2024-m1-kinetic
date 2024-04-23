@@ -75,15 +75,16 @@ using the Kinetic algorithm to facilitate finite element calculations.\newline
 CGAL is a comprehensive package for geometry algorithms, providing various data structures and algorithms for working on polygons, surfaces, mesh generation, and more.
 It offers a wide range of functionalities for geometric processing and analysis in various fields such as computer graphics, computational geometry, and geometric modeling.
 \subsection{IFC project}
-The initiave was create by buildingSMART(BIM),which goal are to support portability between software in
-construction sector.IFC is a file format to replace a framented information systeme to a normalise
-one.So every actor in the sector can use IFC compatible software to open file and modelise what's within
-and don't need to waste time and calcul time to traduct from a format to one they support.
-IFC format is a base object oriented code, with a lot of class associated to any type of needs, like 
-construction site, tools, materials.
-The probleme we have is it's hard to read IFC object to use them in Kinetic program.
-They are bunch of software already traducting IFC to the format we want, but we loose lot of information.
-We will need to work on the object we receive from the traduction to make Kinetic algorithms to read the files.
+
+The initiative was created by buildingSMART (BIM), with the goal of supporting portability between software in the construction sector.
+ IFC is a file format designed to replace a fragmented information system with a standardized one.
+  This enables every actor in the sector to utilize IFC-compatible software to open files and model their contents without wasting time and computational resources on translation between different formats.
+
+The IFC format is based on object-oriented code, with numerous classes associated with various needs such as construction sites, tools, and materials.
+However, a challenge we face is the difficulty in interpreting IFC objects for use in Kinetic programs. While there are several software solutions available for translating IFC to the desired format, 
+we often lose significant amounts of information in the process.
+
+As a result, we need to focus on refining the objects received from the translation process to ensure that Kinetic algorithms can effectively read the files.
 
 \subsection{Kinetic}
 
@@ -100,26 +101,23 @@ Here's what the algorithm is capable of:
 
 We can get a good description about How it's work in general with the report from INRIA 
 \cite{yu:hal-03621896}
+We can obtain a comprehensive understanding of how it works in general from the report by INRIA \cite{yu:hal-03621896}.
 
 \begin{itemize}
-  \item It's use geometric primitives to create planes because
-   of it's relevance for human made environnements
-  \item There are multiple methode to do plan fifting in a 3D modele as Neural Network archictectures or Energy bases Models 
-  The algorithm use the second one.
-  \item To calculate the quality of a primitive configuration x with and an energy U of the format
+\item It uses geometric primitives to create planes due to their relevance in human-made environments.
+\item There are multiple methods for plan fitting in a 3D model, such as Neural Network architectures or Energy-based Models. The algorithm employs the latter.
+\item To evaluate the quality of a primitive configuration x with an energy U of the format
   \newline 
   $ U(x) = w_f U_f(x) + w_s U_c(x) + w_c U_c(x)$
   \newline
-   where all U function are for fidelity,simplicity and completeness of the function and all w are positive watertight
-  \item Them it use geometric operation like merging,splitting,transfer,insertion and exclusion on differents planes and 
-        close primitive.
-\end{itemize}
+  where all U functions pertain to fidelity, simplicity, and completeness, and all w are positive and weight.
+  \item It then utilizes geometric operations such as merging, splitting, transfer, insertion, and exclusion on different planes and closed primitives.
 
-Here we have a speudo code about how the exploration of the set of primitives works 
+  Here, we present pseudocode detailing how the exploration of the set of primitives works:
 \begin{center}
   \includegraphics[scale =  0.5]{../../images/Pseudo_code_exploration.png}
 \end{center}
-The priorrity queue is the set  of primitives which we apply the geometric application on.
+The priority queue represents the set of primitives to which we apply geometric applications.
 
 To utilize the algorithm, we employ one from CGAL. Given a set of parameters and a file containing a point cloud along
  with the associated normals to the points,
