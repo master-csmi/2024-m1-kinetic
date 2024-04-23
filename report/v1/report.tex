@@ -10,11 +10,13 @@
 \maketitle
 \tableofcontents
 \newpage
-\section{Project context}
+\section{Project Context}
 
-Our project is part of a bigger project with the goal of taking IFC file representing building to create 3D models that will be used for energy simulations
-with hihgh performance calculations. In this project they need to fill the missing data in the IFC file to be able to run simulations of energy consumption,losses or even conform estimation .
-
+Our project is part of a larger initiative aimed at processing 
+IFC files representing buildings to create 3D models for energy 
+simulations with high-performance calculations. Within this project, there is a need to 
+complete missing data in the IFC file to enable simulations 
+of energy consumption, losses, or even compliance estimation.
 
 \section{Project Objective}
 
@@ -27,8 +29,9 @@ meshes to produce watertight models, facilitating the execution of finite elemen
 The specific steps to be undertaken are as follows:
 
 \begin{enumerate}   
-    \item \textbf{Mesh Conversion:} From the IFC files we will have a 
-    conversion in the stl or msh format,we will need to convert the STL 
+    \item \textbf{Reading Process or Mesh Conversion :} From the IFC files we will have a 
+    conversion in the stl or msh format,we will need to change the reading process to be able 
+    to read mesh from those format if possible if we cant then we will convert the STL 
     or MSH meshes into one of the formats accepted by the Kinetic algorithm, 
     such as .ply, .xyz, .las, .off.
     
@@ -49,8 +52,9 @@ The specific steps to be undertaken are as follows:
 Currently, the project faces several technical challenges:
 
 \begin{enumerate}
-    \item \textbf{Mesh Conversion:} Find a solutions to convert meshes 
-    from STL or MSH files into one of the formats accepted by the Kinetic algorithm.
+    \item \textbf{Reading Process or Mesh Conversion:} we need to see if its possible to replace the read\_point\_set function by a read\_STL
+    function producing a Point range instead of Point set if we cant we will need to find a
+    solutions to convert meshes from STL or MSH files into one of the formats accepted by the Kinetic algorithm.
     
     \item \textbf{Parameter Optimization:} Identify and adjust appropriate 
     parameters to avoid segmentation faults and achieve satisfactory results 
@@ -82,7 +86,8 @@ We will need to work on the object we receive from the traduction to make Kineti
 
 \subsection{Kinetic}
 
-Kinetic algorithms is a package from CGAL that allows working on meshes with some holes in them. When applied to the mesh, the Kinetic algorithms will 'extend' some surfaces to fill the mesh and make it watertight. 
+Kinetic algorithms is a package from CGAL that allows working on meshes with 
+some holes in them. When applied to the mesh, the Kinetic algorithms will 'extend' some surfaces to fill the mesh and make it watertight. 
 Here's what the algorithm is capable of:
 
 
@@ -229,7 +234,8 @@ which are supported by Kinetic CGAL, ultimately resulting in a mesh with associa
 
 We are using the most trouve mot example of the cgal kinetic algorithm as base for our main. In this main we can change every parameters of the algorithm.
 \newline
-To use the algorithm you need to give him a file from supported format such as .ply , .off, .xyz, .las .
+To use the algorithm we currently need to give him a file from supported format such as .ply , .off, .xyz, .las .
+We will try to change it to be able to read STL and MSH format.
 If the parameters dont respeced the critera we described in the previous section the algorithm can end up in segmentation fault.
 The result of the algorithm will be in an .off format in "resultat" folder.
 \newline
@@ -273,13 +279,18 @@ For better visual understanding, three images are provided below:
 
 \subsection*{Future Perspectives}
 
-    While the results obtained with CGAL and INRIA library data provide valuable insights, it is essential to extend our analysis to data from files in IFC format. We plan to integrate this data into our upcoming experiments to evaluate the performance of the algorithms on real models of buildings and cities.
+    While the results obtained with CGAL and INRIA library data provide valuable 
+    insights, it is essential to extend our analysis to data from files in IFC format.
+    We plan to integrate this data into our upcoming experiments to evaluate the performance 
+    of the algorithms on real models of buildings and cities.
     
 \section{Roadmap}
 As of now, we have work to do in order to utilize the Kinetic algorithm in our environment 
 and understand how to apply it correctly. In the following, we will need to work on the following points:
 \begin{itemize}
-  \item Convert PLT or MSH meshes into a format compatible with the Kinetic algorithm.
+  
+  \item Change the reading process to accept stl or msh format file or if its not possible
+  convert PLT or MSH meshes into a format compatible with the Kinetic algorithm.
   \item If possible, be able to retrieve the labels on the mesh generated by the Kinetic algorithm.
   \item Quality check of the obtained mesh from the kinetic algorithm (same volume as the first mesh)
   \item Apply physical theories to the base mesh and the output mesh to analyze the differences between them.
@@ -290,7 +301,7 @@ for the V1 we modified and completed some issues :
 \begin{itemize}
   \item The Issues Create watertight mesh with kinetic we completed what we wanted to do with this issue but now we want to go further so we modified it 
   to create watertight mesh from files coming to IFC format for the V2
-  \item The issue Convert IFC to .ply format was also changed to convert MSH and STL to supported cgal format for the V2
+  \item The issue Convert IFC to .ply format was also changed to change the reading process or convert MSH and STL to supported cgal format for the V2
   \item The issue setup programming environment for CGAL with github action and submodul,the creation of the main program,the study of the kinetic program were completed 
 \end{itemize}
 
