@@ -78,13 +78,13 @@ It offers a wide range of functionalities for geometric processing and analysis 
 
 The initiative was created by buildingSMART (BIM), with the goal of supporting portability between software in the construction sector.
  IFC is a file format designed to replace a fragmented information system with a standardized one.
-  This enables every actor in the sector to utilize IFC-compatible software to open files and model their contents without wasting time and computational resources on translation between different formats.
+  This enables every actor in the sector to utilize IFC-compatible software to open files and model their contents without wasting time and computational resources on convertion between different formats.
 
 The IFC format is based on object-oriented code, with numerous classes associated with various needs such as construction sites, tools, and materials.
-However, a challenge we face is the difficulty in interpreting IFC objects for use in Kinetic programs. While there are several software solutions available for translating IFC to the desired format, 
+However, a challenge we face is the difficulty in interpreting IFC objects for use in Kinetic programs. While there are several software solutions available to convert IFC to the desired format, 
 we often lose significant amounts of information in the process.
 
-As a result, we need to focus on refining the objects received from the translation process to ensure that Kinetic algorithms can effectively read the files.
+As a result, we need to focus on refining the objects received from the converting process to ensure that Kinetic algorithms can effectively read the files.
 
 \subsection{Kinetic}
 
@@ -106,7 +106,7 @@ We can obtain a comprehensive understanding of how it works in general from the 
 \item There are multiple methods for plan fitting in a 3D model, such as Neural Network architectures or Energy-based Models. The algorithm employs the latter.
 \item To evaluate the quality of a primitive configuration x with an energy U of the format
   \newline 
-  $ U(x) = w_f U_f(x) + w_s U_c(x) + w_c U_c(x)$
+  $        U(x) = w_f U_f(x) + w_s U_c(x) + w_c U_c(x)       $
   \newline
   where all U functions pertain to fidelity, simplicity, and completeness, and all w are positive and weight.
   \item It then utilizes geometric operations such as merging, splitting, transfer, insertion, and exclusion on different planes and closed primitives.
