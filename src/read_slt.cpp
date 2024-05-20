@@ -1,5 +1,6 @@
 #include <CGAL/Simple_cartesian.h>
 #include "../IO/STL/STL_reader.h"
+#include "../IO/STL.h"
 #include <fstream>
 #include <vector>
 
@@ -29,7 +30,7 @@ int main(int argc, char* argv[]) {
     std::vector<Point> points;
     std::vector<std::vector<std::size_t>> facets;
 
-    if (!CGAL::read_STL(input, points, facets)) {
+    if (!CGAL::IO::read_STL(input, points, facets)) {
         std::cerr << "Error: invalid STL file" << std::endl;
         return EXIT_FAILURE;
     }
