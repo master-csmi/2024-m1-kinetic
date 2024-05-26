@@ -260,6 +260,20 @@ To execute KSR on our files we tried different option :
   \item use CGAL method to densified our point cloud with function as CGAL poisson surfeca reparation.
 \end{itemize}
 
+\subsection{software : dorian}
+
+\subsection{CGAL method}
+CGAL has multiple way to generate point cloud in theory, for example :
+\begin{itemize}
+  \item CGAL::Spatial_sort_traits_adapter_3,CGAL::natural_neighbor_coordinates_3(), Interpolate method like moindres carre or spatiale interpolation  
+  \item CGAL::Delaunay_triangulation_3 Delaunay triangulation allow to creat a point cloud on a triangle  
+  \item CGAL::point_generators_3::regular_grid_points() generation on a grid 
+\end{itemize}
+
+If we succeed to generate a big enough point cloud with one of those function, we could try to write it in some off,xyz,ply files to read them and try to assemblate the mesh and to get the result we want.
+
+
+
 
 \section{Analysis of Results}
 
