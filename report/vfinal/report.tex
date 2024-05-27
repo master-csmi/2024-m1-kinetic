@@ -419,6 +419,9 @@ For the V1 we modified and completed some issues:
 For the v2 we completed discovered some problems:
 \begin{itemize}
   \item after converting the stl mesh into a point cloud for the kinetic algorithm the result we have arent satisfactory, 
+  \item To improve our results, future work should focus on orienting the mesh from the STL file and generating a better point cloud. By ensuring the mesh is correctly oriented,
+        we can effectively apply Delaunay triangulation and other CGAL methods without encountering errors. Additionally, 
+        generating a denser and more accurate point cloud will enhance the performance of the KSR algorithm and lead to better outcomes in our applications.
 \end{itemize}
 
 \nocite{*}
