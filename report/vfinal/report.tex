@@ -226,7 +226,7 @@ which are supported by Kinetic CGAL, ultimately resulting in a mesh with associa
 We are using the most complete example of the cgal kinetic algorithm as base for our main. In this main we can change every parameters of the algorithm.
 \newline
 To use the algorithm we currently need to give him a file from supported format such as .ply , .off, .xyz, .las .
-We will try to change it to be able to read STL and MSH format.
+We will try to change it to be able to read STL and MSH format but for now we can use the function read\_stl\_write\_xyz to transform the stl file.
 If the parameters dont respect the critera we described in the previous section the algorithm can end up in segmentation fault.
 The result of the algorithm will be in an .off format in "resultat" folder.
 \newline
@@ -416,7 +416,11 @@ For the V1 we modified and completed some issues:
   \item The issue setup programming environment for CGAL with github action and submodul,the creation of the main program,the study of the kinetic program were completed 
 \end{itemize}
 
-    
+For the v2 we completed discovered some problems:
+\begin{itemize}
+  \item after converting the stl mesh into a point cloud for the kinetic algorithm the result we have arent satisfactory, 
+\end{itemize}
+
 \nocite{*}
 \section{Reference}
 \bibliographystyle{plain}
