@@ -49,16 +49,50 @@
 
 \section{Tools}
 \begin{frame}{Cgal}
+    \includegraphics[scale = 0.2]{../../images/CGAL_logo.png}
+    \begin{itemize}
+        \item C++ library for geometric calcul 
+        \item Provides data structures and algorithms for:
+        \begin{itemize}
+            \item Computational geometry
+            \item Mesh generation and processing
+            \item Geometry processing
+            \item Surface and volume manipulation
+        \end{itemize}
+        \item For our usage Kinetic surface reparation algorithme, file reader
+    \end{itemize}
 
 \end{frame}
 \section{Implementation}
-\begin{frame}{STL}
-
+\begin{frame}{STL (STereoLithography)}
+    \begin{itemize}
+        \item File format for 3D modeling
+        \item Stock a collection of triangle composing the mesh without any other information
+    \end{itemize}
+    \begin{center}
+        \includegraphics[scale=0.3]{../../images/ACJASMINSTL.png}
+    \end{center}
 \end{frame}
+
 \section{Analysis of Result}
 \begin{frame}{first result}
-
+First we can show you what KSR algorithm is capable of: 
+\begin{figure}[H]
+    \begin{minipage}[t]{0.33\textwidth}
+        \includegraphics[width=\textwidth]{../../images/screen_kinetic/flame_point.png}
+        \caption*{flame point cloud}
+    \end{minipage}
+    \begin{minipage}[t]{0.33\textwidth}
+      \includegraphics[width=\textwidth]{../../images/screen_kinetic/flame_cgal.png}
+      \caption*{flame with cgal}
+    \end{minipage}
+    \begin{minipage}[t]{0.33\textwidth}
+        \includegraphics[width=\textwidth]{../../images/screen_kinetic/flame_inria.png}
+        \caption*{flame with inria}
+      \end{minipage}
+\end{figure}
 \end{frame}
+
 \begin{frame}{last result}
 
 \end{frame}
