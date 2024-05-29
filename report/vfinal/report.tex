@@ -290,23 +290,36 @@ For better visual understanding, three images are provided below:
 
 \vspace{0.5cm}
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.25\textwidth]{../../images/screen_kinetic/building_point.png}
-\hspace{0.05\textwidth}
-\includegraphics[width=0.25\textwidth]{../../images/screen_kinetic/building_cgal.png}
-\hspace{0.05\textwidth}
-\includegraphics[width=0.25\textwidth]{../../images/screen_kinetic/building_inria.png}
-\caption{Visualization of results with a building}
+  \centering
+  \begin{minipage}[t]{0.29\textwidth}
+  \includegraphics[width=\textwidth]{../../images/screen_kinetic/building_point.png}
+  \caption*{point cloud}
+\end{minipage}
+  \begin{minipage}[t]{0.29\textwidth}
+  \includegraphics[width=\textwidth]{../../images/screen_kinetic/building_cgal.png}
+  \caption*{cgal result}
+\end{minipage}
+  \begin{minipage}[t]{0.29\textwidth}
+  \includegraphics[width=\textwidth]{../../images/screen_kinetic/building_inria.png}
+  \caption*{inria result}
+  \end{minipage}
+  \caption{Visualization of results with a building}
+  \end{figure}
+  \begin{figure}[H]
+    \begin{minipage}[t]{0.29\textwidth}
+        \includegraphics[width=\textwidth]{../../images/screen_kinetic/flame_point.png}
+        \caption*{point cloud}
+    \end{minipage}
+    \begin{minipage}[t]{0.33\textwidth}
+      \includegraphics[width=\textwidth]{../../images/screen_kinetic/flame_cgal.png}
+      \caption*{cgal result}
+    \end{minipage}
+    \begin{minipage}[t]{0.27\textwidth}
+        \includegraphics[width=\textwidth]{../../images/screen_kinetic/flame_inria.png}
+        \caption*{inria result}
+      \end{minipage}
+      \caption{Visualization of results on a flame}
 \end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.25\textwidth]{../../images/screen_kinetic/flame_point.png}
-    \hspace{0.05\textwidth}
-    \includegraphics[width=0.29\textwidth]{../../images/screen_kinetic/flame_cgal.png}
-    \hspace{0.05\textwidth}
-    \includegraphics[width=0.22\textwidth]{../../images/screen_kinetic/flame_inria.png}
-    \caption{Visualization of results with a flame}
-    \end{figure}
 
 \subsection{Final Result}
 
@@ -316,18 +329,19 @@ For the final analysis we worked on 2 of the example provided by Vincent Chabann
   \centering
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones.png}
-    \caption{3zones}
+    \caption*{3zones}
   \end{minipage}
   \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin.png}
-    \caption{ACJasmin}
+    \caption*{ACJasmin}
   \end{minipage}
   \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_inside.png}
-    \caption{ACJasmin\_inside}
+    \caption*{ACJasmin\_inside}
   \end{minipage}
+  \caption{stl basis}
 \end{figure}  
 
 For the first example, 3zones, 
@@ -335,22 +349,26 @@ we used CloudCompare to create the PLY point cloud file for the CGAL algorithm,
 and we calculated the necessary normals in Meshlab, which gave us the best results. 
 However, the resulting watertight mesh lost all the details from the STL file,
 such as the windows and doors, which have disappeared.
+We can also see the importance of the normals calculation for the algorithm.
 
 \vspace{0.5cm}
 \begin{figure}[H]
   \centering
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_point_cloud.png}
-    \caption{3zones point cloud}
+    \caption*{point cloud}
   \end{minipage}
+  \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_result_normal5_cgal.png}
-    \caption{3zones result normal by MeshLab}
+    \caption*{result normal by MeshLab}
   \end{minipage}
+  \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_result_normal_cgal.png}
-    \caption{3zones result normal by cgal}
+    \caption*{result normal by cgal}
   \end{minipage}
+  \caption{3zones example}
 \end{figure}  
 
 For the second example, ACJasmin we used the same protocol as the first example but for 
@@ -364,16 +382,19 @@ This is the result we got from the cgal version:
   \centering
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_point_cloud.png}
-    \caption{ACJasmin point cloud}
+    \caption*{point cloud}
   \end{minipage}
+  \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_primitive_cgal.png}
-    \caption{ACJasmin primitives by cgal}
+    \caption*{primitives}
   \end{minipage}
+  \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_result_CGAL.png}
-    \caption{ACJasmin result by cgal}
+    \caption*{result}
   \end{minipage}
+  \caption{ACJasmin example with cgal}
 \end{figure}  
 
 After the cgal version we tried the IRNIA version the result was still disapointing but better: 
@@ -382,16 +403,17 @@ After the cgal version we tried the IRNIA version the result was still disapoint
   \centering
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_point_cloud.png}
-    \caption*{ACJasmin point cloud}
+    \caption*{point cloud}
   \end{minipage}
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_primitive.png}
-    \caption*{ACJasmin primitives by INRIA}
+    \caption*{primitives}
   \end{minipage}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_result_INRIA.png}
-    \caption*{ACJasmin result normal by INRIA}
+    \caption*{result}
   \end{minipage}
+  \caption{ACJasmin example with INRIA}
 \end{figure}  
 As we can see in those images the results we have from the 
 algorithm isnt really satisfactory we need to find a solution 
