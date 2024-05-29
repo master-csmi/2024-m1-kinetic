@@ -69,7 +69,7 @@ using the Kinetic algorithm to facilitate finite element calculations.\newline
 \subsection{CGAL}
 CGAL is a comprehensive package for geometry algorithms, providing various data structures and algorithms for working on polygons, surfaces, mesh generation, and more.
 It offers a wide range of functionalities for geometric processing and analysis in various fields such as computer graphics, computational geometry, and geometric modeling.
-\subsection{IFC project}
+\subsection{IFC Format}
 
 The initiative was created by buildingSMART (BIM), with the goal of supporting portability between software in the construction sector.
  IFC is a file format designed to replace a fragmented information system with a standardized one.
@@ -94,6 +94,53 @@ Here's what the algorithm is capable of:
 
 \end{figure}
 
+
+\section{Implementation}
+
+We are using the most complete example of the cgal kinetic algorithm as base for our main. In this main we can change every parameters of the algorithm.
+\newline
+To use the algorithm we currently need to give him a file from supported format such as .ply , .off, .xyz, .las .
+We will try to change it to be able to read STL and MSH format but for now we can use the function read\_stl\_write\_xyz to transform the stl file.
+If the parameters dont respect the critera we described in the previous section the algorithm can end up in segmentation fault.
+The result of the algorithm will be in an .off format in "resultat" folder.
+\newline
+We can present an example of the command to execute the program:
+\newline
+" ./build/default/bin/kinetic -data data/flame.ply -dist 0.3 -minp 50 -regangle 5 "
+\newline
+
+
+\subsection{File Format}
+In this project we use different files Format as: 
+
+\begin{itemize}
+  \item XYZ : An XYZ file contains point cloud data with each point's coordinates in 3D space.
+  \item PLY : A PLY file stores 3D model data including vertices, faces, and optional attributes like color and normals.
+  \item STL : An STL file represents the surface geometry of a 3D object using triangular facets.
+  
+\end{itemize}
+
+\subsection{STL Reading and Use}
+
+In the CGAL library, we have methods to read various file formats such as PLY, OFF, and XYZ, including STL files. When we use the `read stl` function, we obtain the following output:
+
+\begin{itemize}
+  \item A list of all points used in the mesh.
+  \item A list of vertices with all points used in every polygon.
+\end{itemize}
+
+Thus, we have access to a point cloud and a list of polygons. The KSR algorithm only needs a point cloud to work. We proceed by calculating the normals associated with all points, 
+writing all the points and normals into an .xyz file, and then reading the .xyz file with our main program to apply the KSR algorithm.
+However, one issue with STL files is the low number of points they provide, which leads to suboptimal performance of the algorithm and potential errors. Therefore, we need to find a way to densify our point cloud.
+To execute KSR on our files, we tried different options:
+
+\begin{itemize}
+  \item Using free and open source software such as CloudCompare.
+  \item Using CGAL methods to densify our point cloud, such as the CGAL Poisson surface reconstruction.
+\end{itemize}
+
+
+\subsection{Kinetic algorithm}
 We can obtain a comprehensive understanding of how it works in general from the report by INRIA \cite{yu:hal-03621896}.
 
 \begin{itemize}
@@ -101,7 +148,7 @@ We can obtain a comprehensive understanding of how it works in general from the 
 \item There are multiple methods for plan fitting in a 3D model, such as Neural Network architectures or Energy-based Models. The algorithm employs the latter.
 \item To evaluate the quality of a primitive configuration x with an energy U of the format
   \newline 
-  $        U(x) = w_f U_f(x) + w_s U_c(x) + w_c U_c(x)       $
+  $        U(x) = w_f U_f(x) + w_s U_s(x) + w_c U_c(x)       $
   \newline
   where all U functions pertain to fidelity, simplicity, and completeness, and all w are positive and weight.
   \item It then utilizes geometric operations such as merging, splitting, transfer, insertion, and exclusion on different planes and closed primitives.
@@ -218,40 +265,6 @@ resulting in the loss of valuable information regarding the types of structures 
 we plan to implement a process involving the conversion of IFC to scatter plot with associated data, followed by conversion to formats such as .plt, .ply, .xyz,
 which are supported by Kinetic CGAL, ultimately resulting in a mesh with associated data.
 
-
-\section{Implementation}
-
-We are using the most complete example of the cgal kinetic algorithm as base for our main. In this main we can change every parameters of the algorithm.
-\newline
-To use the algorithm we currently need to give him a file from supported format such as .ply , .off, .xyz, .las .
-We will try to change it to be able to read STL and MSH format but for now we can use the function read\_stl\_write\_xyz to transform the stl file.
-If the parameters dont respect the critera we described in the previous section the algorithm can end up in segmentation fault.
-The result of the algorithm will be in an .off format in "resultat" folder.
-\newline
-We can present an example of the command to execute the program:
-\newline
-" ./build/default/bin/kinetic -data data/flame.ply -dist 0.3 -minp 50 -regangle 5 "
-\newline
-
-
-\subsection{STL Reading and Use}
-
-In the CGAL library, we have methods to read various file formats such as PLY, OFF, and XYZ, including STL files. When we use the `read stl` function, we obtain the following output:
-
-\begin{itemize}
-  \item A list of all points used in the mesh.
-  \item A list of vertices with all points used in every polygon.
-\end{itemize}
-
-Thus, we have access to a point cloud and a list of polygons. The KSR algorithm only needs a point cloud to work. We proceed by calculating the normals associated with all points, 
-writing all the points and normals into an .xyz file, and then reading the .xyz file with our main program to apply the KSR algorithm.
-However, one issue with STL files is the low number of points they provide, which leads to suboptimal performance of the algorithm and potential errors. Therefore, we need to find a way to densify our point cloud.
-To execute KSR on our files, we tried different options:
-
-\begin{itemize}
-  \item Using free and open source software such as CloudCompare.
-  \item Using CGAL methods to densify our point cloud, such as the CGAL Poisson surface reconstruction.
-\end{itemize}
 
 \subsection{CloudCompare}
 We used CloudCompare to create a densified point cloud with an stl file as basis.
@@ -436,14 +449,16 @@ For the V1 we modified and completed some issues:
   \item The issue setup programming environment for CGAL with github action and submodul,the creation of the main program,the study of the kinetic program were completed 
 \end{itemize}
 
+
+
 \section{Conclusion}
-For the v2 we completed discovered some problems:
-\begin{itemize}
-  \item after converting the stl mesh into a point cloud for the kinetic algorithm the result we have arent satisfactory, 
-  \item To improve our results, future work should focus on orienting the mesh from the STL file and generating a better point cloud. By ensuring the mesh is correctly oriented,
-        we can effectively apply Delaunay triangulation and other CGAL methods without encountering errors. Additionally, 
-        generating a denser and more accurate point cloud will enhance the performance of the KSR algorithm and lead to better outcomes in our applications.
-\end{itemize}
+The kinetic algorithm serves the purpose of upgrading meshes and making them watertight, even if some details are lost in the process. However, 
+there are still many limitations regarding its application, and significant preprocessing of the mesh may be required before executing the algorithm. 
+Even after converting the STL mesh into a point cloud for the kinetic algorithm, the results are not satisfactory.
+
+We can explore different ways to improve our results. Future work should focus on orienting the mesh from the STL file and generating a better point cloud. 
+By ensuring the mesh is correctly oriented, we can effectively apply Delaunay triangulation or other CGAL methods without encountering errors to  generate a denser 
+and more accurate point cloud will enhance the performance of the KSR algorithm and lead to better outcomes in our applications.
 
 \nocite{*}
 \section{Reference}
