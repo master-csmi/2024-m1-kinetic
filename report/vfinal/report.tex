@@ -12,7 +12,8 @@
 \maketitle
 \tableofcontents
 \newpage
-\section{Project Context}
+
+\section{Introduction}
 
 Our project is part of a larger initiative aimed at processing 
 IFC files representing buildings to create 3D models for energy 
@@ -20,7 +21,7 @@ simulations with high-performance calculations. Within this project, there is a 
 complete missing data in the IFC file to enable simulations 
 of energy consumption and losses.
 
-\section{Project Objective}
+\subsection{Project Objective}
 
 Within this project scope, the primary goal is to implement an efficient and accurate 
 conversion process for Industry Foundation Classes (IFC) 
@@ -49,7 +50,7 @@ The specific steps to be undertaken are as follows:
     the Kinetic algorithm to entire city models.
 \end{enumerate}
 
-\section{Current Project Challenges}
+\subsection{Project Challenges}
 
 Currently, the project faces several technical challenges:
 
@@ -315,17 +316,17 @@ For the final analysis we worked on 2 of the example provided by Vincent Chabann
   \centering
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones.png}
-    \caption*{3zones}
+    \caption{3zones}
   \end{minipage}
   \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin.png}
-    \caption*{ACJasmin}
+    \caption{ACJasmin}
   \end{minipage}
   \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_inside.png}
-    \caption*{ACJasmin\_inside}
+    \caption{ACJasmin\_inside}
   \end{minipage}
 \end{figure}  
 
@@ -340,15 +341,15 @@ such as the windows and doors, which have disappeared.
   \centering
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_point_cloud.png}
-    \caption*{3zones point cloud}
+    \caption{3zones point cloud}
   \end{minipage}
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_result_normal5_cgal.png}
-    \caption*{3zones result normal by MeshLab}
+    \caption{3zones result normal by MeshLab}
   \end{minipage}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_result_normal_cgal.png}
-    \caption*{3zones result normal by cgal}
+    \caption{3zones result normal by cgal}
   \end{minipage}
 \end{figure}  
 
@@ -363,15 +364,15 @@ This is the result we got from the cgal version:
   \centering
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_point_cloud.png}
-    \caption*{ACJasmin point cloud}
+    \caption{ACJasmin point cloud}
   \end{minipage}
   \begin{minipage}[t]{0.29\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_primitive_cgal.png}
-    \caption*{ACJasmin primitives by cgal}
+    \caption{ACJasmin primitives by cgal}
   \end{minipage}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_result_CGAL.png}
-    \caption*{ACJasmin result by cgal}
+    \caption{ACJasmin result by cgal}
   \end{minipage}
 \end{figure}  
 
@@ -415,6 +416,7 @@ For the V1 we modified and completed some issues:
   \item The issue setup programming environment for CGAL with github action and submodul,the creation of the main program,the study of the kinetic program were completed 
 \end{itemize}
 
+\section{Conclusion}
 For the v2 we completed discovered some problems:
 \begin{itemize}
   \item after converting the stl mesh into a point cloud for the kinetic algorithm the result we have arent satisfactory, 
