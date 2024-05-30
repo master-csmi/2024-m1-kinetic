@@ -51,12 +51,11 @@
         \item C++ library for geometric calcul 
         \item Provides data structures and algorithms for:
         \begin{itemize}
-            \item Computational geometry
             \item Mesh generation and processing
             \item Geometry processing
             \item Surface and volume manipulation
         \end{itemize}
-        \item For our usage Kinetic surface reparation algorithme, file reader
+        \item For our usage Kinetic surface reparation algorithm, filess readers
     \end{itemize}
 \end{frame}
 
@@ -66,7 +65,7 @@
 \section{Files format}
 \begin{frame}{IFC and ply,xyz Files}
 \begin{itemize}
-    \item IFC : An initiative from buildingSMART (BIM), to standardize files for 3D modeling,it's an object-oriented code 
+    \item IFC : An initiative from buildingSMART (BIM), to standardize files for 3D modeling,similar to  an object-oriented code 
     \item xyz : File format to stock a point cloud
     \item ply : File format to stock a point cloud with normal associated
 \end{itemize}
@@ -76,7 +75,7 @@
 \begin{frame}{STL (STereoLithography)}
     \begin{itemize}
         \item File format for 3D modeling we convert IFC object to this format
-        \item Stock a collection of triangle composing the mesh without any other information
+        \item Stock a collection of triangle with normal associated composing  the mesh without any other information
     \end{itemize}
     \begin{center}
         \includegraphics[scale=0.3]{../../images/ACJASMINSTL.png}
@@ -86,6 +85,7 @@
 
 \section{Implementation}
 \begin{frame}{Kinetic}
+We get information from a INRIA report \cite{yu:hal-03621896}
 Kinetic algorithm is an geometric algorithm to work on 3D mesh it uses  geometric primitive with an energy based model to fit the primitives to the model.
 
 Energy formule: 
@@ -96,13 +96,7 @@ Energy formule:
 
 to calculate the best primitive to fit the mesh.
 then we have a list of geometric operation on each primitive
-\begin{itemize}
-    \item merging
-    \item splitting 
-    \item transfer 
-    \item insertion
-    \item exclusion
-\end{itemize}
+\includegraphics[scale=0.5]{../../images/geometric_operation.png}
 \end{frame}
 \begin{frame}
     
@@ -227,6 +221,19 @@ First we can show you what KSR algorithm is capable of:
           \caption{result on ACJasmin example using INRIA algorithm}
       \end{figure}  
 \end{frame}
+
+\begin{frame}
+    Why it does not work? We have few idea  
+    \begin{itemize}
+        \item Error can be generate when we have not enought point in our point cloud
+        \item If the mesh is badly oriented mesh can have problem to generate
+    \end{itemize}
+\end{frame} 
+
+\begin{frame}{better result }
+    dorian met l'image la je pense 
+\end{frame}
+
 
 \begin{frame}{Conclusion}
     The kinetic algorithm serves the purpose of upgrading meshes and making them watertight,
