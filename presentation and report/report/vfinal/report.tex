@@ -103,7 +103,7 @@ We are using the most complete example of the cgal kinetic algorithm as base for
 To use the algorithm we currently advice to imput a file in those format: ply, off, xyz, las.
 Our main is now able to read STL and MSH format but for now by transorming the point of the format in an xyz file,
 but for now the result of this transformation is still bad because of the density of point given by the transformation compared to the density needed by the algorithm.
-In this main we can change every parameters of the algorithm but if the parameters dont respect the critera we described in the Kinetic algorithm section \hyperref[subsec:Kinetic algorithm]{ (3.3)} the algorithm can end up in segmentation fault.
+In this main we can change every parameters of the algorithm but if the parameters dont respect the critera we described in the Test of parameters section \hyperref[subsec:Test of parameters]{ (3.5)} the algorithm can end up in segmentation fault.
 The result of the algorithm will be in an off format in "result" folder.
 \newline
 We can present example of the command to execute the program:
@@ -145,7 +145,7 @@ To execute KSR on our files, we tried different options:
 
 
 \subsection{Kinetic algorithm}
-\label{subsec:Kinetic algorithm}
+
 We can obtain a comprehensive understanding of how it works in general from the report by INRIA \cite{yu:hal-03621896}.
 
 \begin{itemize}
@@ -182,7 +182,8 @@ We obtained our different meshes from different sources with the name of the fil
   \item from Vincent Chabannes : 3zones.stl , ACJasmin.stl
 \end{itemize}
 
-\subsection{Test of the parameter}
+\subsection{Test of the parameters}
+\label{subsec:Test of parameters}
 In order to understand how these parameters affect the outcome, we will examine the same point cloud while varying the value of 'pmin' first and then varying 'dist.'
 The algorithm produces .off files as output, which can be visualized using software such as MeshLab.
 
