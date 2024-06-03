@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{subcaption}
 \usepackage[colorlinks=true,allcolors=blue]{hyperref} % Ajout du package hyperref pour les liens
 \title{Report, Kinetic project}
 \author{Dorian Geraldes Pereira, Axel Demuth}
@@ -75,7 +76,7 @@ The initiative was created by buildingSMART (BIM), with the goal of supporting p
  IFC is a file format designed to replace a fragmented information system with a standardized one.
   This enables every actor in the sector to utilize IFC-compatible software to open files and model their contents without wasting time and computational resources on convertion between different formats.
 
-The IFC format is based on object-oriented code, with numerous classes associated with various needs such as construction sites, tools, and materials.
+The IFC format is a volume-based 3D representation , The file is very similar to object-oriented code, with numerous classes associated with various needs such as construction sites, tools, and materials.
 However, a challenge we face is the difficulty in interpreting IFC objects for use in Kinetic programs. While there are several software solutions available to convert IFC to the desired format, 
 we often lose significant amounts of information in the process.
 
@@ -137,6 +138,7 @@ To execute KSR on our files, we tried different options:
 \begin{itemize}
   \item Using free and open source software such as CloudCompare.
   \item Using CGAL methods to densify our point cloud, such as the CGAL Poisson surface reconstruction.
+  \item Using Meshlab sampling functions as Monte Carlo sample or Poisson dist Sample
 \end{itemize}
 
 
@@ -168,11 +170,21 @@ Two parameters stand out as particularly important:
   \item 'pmin' represents the number of points used to construct a plane.
 \end{itemize}
 
+
+\subsection{Data}
+We obtained our different meshes from different sources with the name of the files: 
+\begin{itemize}
+  \item from the KSR example package from INRIA : flame.ply
+  \item from the package \texttt{data\_point\_3} from CGAL : building.ply 
+  \item from Vincent Chabannes : 3zones.stl , ACJasmin.stl
+\end{itemize}
+
+\subsection{Test of the parameter}
 In order to understand how these parameters affect the outcome, we will examine the same point cloud while varying the value of 'pmin' first and then varying 'dist.'
 The algorithm produces .off files as output, which can be visualized using software such as MeshLab.
 
 \newpage
-The original point cloud represents this building:
+The original point cloud represents this building :
 \vspace{\baselineskip}
 
 \begin{center}
@@ -182,32 +194,33 @@ The original point cloud represents this building:
 
 
 \begin{figure}[H]
-    \centering
-    \begin{minipage}[b]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_pmin220.png}
-      \caption{dist1\_pmin220}
-      \label{fig:dist1_pmin220}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[b]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_pmin250.png}
-      \caption{dist1\_pmin250}
-      \label{fig:dist1_pmin250}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[b]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_pmin280.png}
-      \caption{dist1\_pmin280}
-      \label{fig:dist1_pmin280}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[b]{0.45\textwidth}
-
-        \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_pmin300.png}
-        \caption{dist1\_pmin300}
-        \label{fig:dist1_pmin300}
-      \end{minipage}
-  \end{figure}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_pmin220.png}
+    \caption{dist1\_pmin220}
+    \label{fig:dist1_pmin220}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_pmin250.png}
+    \caption{dist1\_pmin250}
+    \label{fig:dist1_pmin250}
+  \end{subfigure}
+  \vfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_pmin280.png}
+    \caption{dist1\_pmin280}
+    \label{fig:dist1_pmin280}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_pmin300.png}
+    \caption{dist1\_pmin300}
+    \label{fig:dist1_pmin300}
+  \end{subfigure}
+  \caption{Variation of p\_min on the same mesh}
+  \label{fig:ensemble_images}
+\end{figure}
   
   First, it's important to understand that setting 'pmin' too low can lead to errors. Subsequently,if 'pmin' is too small, we may not capture enough structural detail,
   whereas setting 'pmin' too high may cause planes to overlap, resulting in loss of information
@@ -216,38 +229,38 @@ The original point cloud represents this building:
 
   \begin{figure}[H]
     \centering
-    \begin{minipage}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_5_pmin_250.png}
-      \caption{dist15\_pmin250.png}
+      \caption{dist15\_pmin250}
       \label{fig:dist15_pmin220}
-    \end{minipage}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist1_pmin250.png}
       \caption{dist1\_pmin250}
       \label{fig:dist1_pmin250}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[b]{0.45\textwidth}
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist_0_3_pmin_250.png}
-      \caption{dist03\_pmin250}
-      \label{fig:dist03_pmin250}
-    \end{minipage}
+      \caption{dist0.3\_pmin250}
+      \label{fig:dist0.3_pmin250}
+    \end{subfigure}
     \hfill
-    \begin{minipage}[b]{0.45\textwidth}
-
-        \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist_001_pmin_250.png}
-        \caption{dist001\_pmin250}
-        \label{fig:dist1_pmin300}
-      \end{minipage}
-    \begin{minipage}[b]{0.45\textwidth}
-
-        \includegraphics[width=\textwidth]{../../images/screen_kinetic/back_dist001_pmin250.png}
-        \caption{dist001\_pmin250}
-        \label{fig:dist1_pmin300}
-      \end{minipage}
-  \end{figure}
-
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{../../images/screen_kinetic/dist_001_pmin_250.png}
+      \caption{dist0.01\_pmin250}
+      \label{fig:dist0.01_pmin300}
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{../../images/screen_kinetic/back_dist001_pmin250.png}
+      \caption{back\_dist0.01\_pmin250}
+      \label{fig:back_dist0.01_pmin250}
+    \end{subfigure}
+    \caption{Variation of dist on the same mesh}
+    \label{fig:variation_pmin}
+\end{figure}
 
   When considering the 'dist' parameter, if it is set too high, we risk losing significant structural details. 
   In the opposite, if the distance is too small, surfaces may be divided into too many planes, potentially resulting in an incomplete coverage of the entire mesh, 
