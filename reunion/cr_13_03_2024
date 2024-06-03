@@ -1,9 +1,0 @@
-Zoom Meeting Chabannes Vincent,Alliez Pierre, Geraldes Pereira, Demuth Axel
-
-Introduction to the CGAL package, a C++ library to perform geometric calculations.
-
-Introduction to the Kinetic algorithm, which allows fixing a mesh to make it "watertight", meaning to close the gap betwwen the different surface in the mesh 
-
-We need to work on how to use the CGAL package in C++. Later, we will need to be able to read IFC files. We can also start reading documentation on the kinetic program to learn how it works and how to use it.
-
-One of the goals of the project is to apply the Kinetic algorithm to house meshes and to keep the label of the surfaces 
