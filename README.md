@@ -35,10 +35,14 @@ cmake --build --preset default
 ```
 ## Execution of the project :
 the different parameters important to change are :
+
 -data 
+
 -dist 
+
 -minp 
--stl 1  # if you want to use an stl file as imput
+
+-stl 1  (if you want to use an stl file as imput)
 
 to execute the project you can use 
 ```
