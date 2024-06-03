@@ -29,6 +29,9 @@ using Parameters      = CGAL::KSR::All_parameters<FT>;
 using Terminal_parser = CGAL::KSR::Terminal_parser<FT>;
 using Timer = CGAL::Real_timer;
 
+typedef CGAL::Simple_cartesian<double> Kernel2;
+typedef Kernel2::Point_3 Point;
+
 template <typename T>
 std::string to_stringp(const T a_value, const int n = 6)
 {
@@ -48,7 +51,7 @@ void parse_terminal(Terminal_parser& parser, Parameters& parameters) {
   std::cout << "--- INPUT PARAMETERS: " << std::endl;
 
   parser.add_str_parameter("-data", parameters.data);
-
+  
   // Shape detection.
   parser.add_val_parameter("-kn"   , parameters.k_neighbors); // pas important 
   parser.add_val_parameter("-dist" , parameters.maximum_distance); // important pour le niveau de precision epsilon
@@ -79,6 +82,7 @@ void parse_terminal(Terminal_parser& parser, Parameters& parameters) {
 
   // Debug.
   parser.add_bool_parameter("-debug", parameters.debug);
+  parser.add_bool_parameter("-stl", parameters.stl);
 
   // Verbose.
   parser.add_bool_parameter("-verbose", parameters.verbose);
@@ -99,10 +103,33 @@ int main(const int argc, const char** argv) {
 
   // If no input data is provided, use input from data directory.
   if (parameters.data.empty())
-    parameters.data = "data/Simple/Chair/Chair.ply";
+    parameters.data = "data data/flame.ply";
 
+  if(parameters.stl)
+  {
+    std::ifstream input(parameters.data, std::ios::binary);
+    if (!input) {
+        std::cerr << "Error: cannot open file " << parameters.data << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    std::vector<Point> points;
+    std::vector<std::vector<std::size_t>> facets;
+
+    if (!CGAL::IO::read_STL(input, points, facets)) {
+        std::cerr << "Error: invalid STL file" << std::endl;
+        return EXIT_FAILURE;
+    }
+    if(!CGAL::IO::write_XYZ(parameters.data+".xyz", points))
+    {
+      std::cerr << "Error: invalid xyz file" << std::endl;
+        return EXIT_FAILURE;
+    }
+    parameters.data+=".xyz";
+  }
   // Input.
   Point_set point_set(parameters.with_normals);
+  std::cout<<parameters.data<<std::endl;
   CGAL::IO::read_point_set(parameters.data, point_set);
 
   if (point_set.size() == 0) {

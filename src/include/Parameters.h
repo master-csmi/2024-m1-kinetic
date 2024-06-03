@@ -29,7 +29,7 @@ namespace KSR {
     bool with_normals; // do we use normals
     bool verbose;// verbose basic info
     bool debug; // verbose more info
-
+    bool stl;
     // Shape detection / Shape regularization.
     // See the corresponding CGAL packages.
     std::size_t k_neighbors;
@@ -62,6 +62,7 @@ namespace KSR {
       with_normals(true),
       verbose(false),
       debug(false),
+      stl(false),
       // shape detection / shape regularization
       k_neighbors(12),
       min_region_size(0),
