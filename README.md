@@ -53,6 +53,6 @@ to execute the project you can use
 ./build/default/bin/kinetic -data data/flame.ply -dist 0.3 -minp 50 -regangle 5
 ./build/default/bin/kinetic -data data/3zones_normal5.ply -dist 0.2 -minp 500 # data with normal 
 ./build/default/bin/kinetic -data data/3zones_normal_apres.ply -dist 0.2 -minp 500  #data without normal 
-./build/default/bin/kinetic -data data/ACJasmin_Mesh2_test2.ply -dist 0.3 -minp 300 # data with normal
+./build/default/bin/kinetic -data data/ACJasmin_Mesh.ply -dist 0.3 -minp 300 # data with normal
 ./build/default/bin/kinetic -data data/mesh_ThreeZones.stl -stl 1
 ```

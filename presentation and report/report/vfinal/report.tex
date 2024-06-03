@@ -317,32 +317,41 @@ For better visual understanding, three images are provided below:
   \centering
   \begin{minipage}[t]{0.29\textwidth}
   \includegraphics[width=\textwidth]{../../images/screen_kinetic/building_point.png}
-  \caption*{point cloud}
+  \caption*{point cloud,\newline
+  file: building.ply}
 \end{minipage}
   \begin{minipage}[t]{0.29\textwidth}
   \includegraphics[width=\textwidth]{../../images/screen_kinetic/building_cgal.png}
-  \caption*{cgal result}
+  \caption*{cgal result,\newline
+  data: building.ply, 
+  \newline parameters: -dist 0.4 \newline-minp 100 -regangle0 5}
 \end{minipage}
+\hspace{0.05\textwidth}
   \begin{minipage}[t]{0.29\textwidth}
   \includegraphics[width=\textwidth]{../../images/screen_kinetic/building_inria.png}
-  \caption*{inria result}
+  \caption*{inria result,\newline
+  data: building.ply
+  }
   \end{minipage}
-  \caption{Visualization of results with a building}
+  \caption{Visualization of results with building.ply}
   \end{figure}
   \begin{figure}[H]
     \begin{minipage}[t]{0.29\textwidth}
         \includegraphics[width=\textwidth]{../../images/screen_kinetic/flame_point.png}
-        \caption*{point cloud}
+        \caption*{point cloud,\newline
+        file: flame.ply}
     \end{minipage}
     \begin{minipage}[t]{0.33\textwidth}
       \includegraphics[width=\textwidth]{../../images/screen_kinetic/flame_cgal.png}
-      \caption*{cgal result}
+      \caption*{cgal result,\newline
+      data: flame.ply}
     \end{minipage}
     \begin{minipage}[t]{0.27\textwidth}
         \includegraphics[width=\textwidth]{../../images/screen_kinetic/flame_inria.png}
-        \caption*{inria result}
+        \caption*{inria result,\newline
+        data: flame.ply}
       \end{minipage}
-      \caption{Visualization of results on a flame}
+      \caption{Visualization of results with flame.ply}
 \end{figure}
 
 \subsection{Final Result}
@@ -365,7 +374,7 @@ For the final analysis we worked on 2 of the example provided by Vincent Chabann
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_inside.png}
     \caption*{ACJasmin\_inside}
   \end{minipage}
-  \caption{stl basis}
+  \caption{Visualization of STL files that serves as basis for the following example}
 \end{figure}  
 
 For the first example, 3zones, 
@@ -378,27 +387,30 @@ We can also see the importance of the normals calculation for the algorithm.
 \vspace{0.5cm}
 \begin{figure}[H]
   \centering
-  \begin{minipage}[t]{0.29\textwidth}
+  \begin{minipage}[t]{0.32\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_point_cloud.png}
     \caption*{point cloud}
   \end{minipage}
+
+  \begin{minipage}[t]{0.35\textwidth}
+    \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_result_normal5_cgal.png}
+    \caption*{result normal by MeshLab,\newline
+    data: 3zones\_normal5.ply,\newline
+    parameters: -dist 0.2 \newline-minp 500}
+  \end{minipage}
   \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.29\textwidth}
-    \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_result_normal5_cgal.png}
-    \caption*{result normal by MeshLab}
-  \end{minipage}
-  \hspace{0.05\textwidth}
-  \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/3zones_result_normal_cgal.png}
-    \caption*{result normal by cgal}
+    \caption*{result normal by cgal,\newline data: 3zones\_normal\_apres.ply,\newline
+    parameters: -dist 0.2 \newline-minp 500}
   \end{minipage}
-  \caption{3zones example}
+  \caption{result with 3zones example}
 \end{figure}  
 
 For the second example, ACJasmin we used the same protocol as the first example but for 
 this example we decided to remove the ground around the house because it created a lots of problems,
-the result we got were a lot more disapointed than the first example.
-The mesh we got  wasnt watertight and we lost nearly every detail like the first example 
+the result we got were a lot more disapointing than the first example.
+The mesh we got is open and we lost nearly every detail like the first example 
 just a bit of the stairs still remained
 This is the result we got from the cgal version:
 \vspace{\baselineskip}
@@ -416,9 +428,10 @@ This is the result we got from the cgal version:
   \hspace{0.05\textwidth}
   \begin{minipage}[t]{0.27\textwidth}
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_result_CGAL.png}
-    \caption*{result}
+    \caption*{result,
+    \newline parameters: -dist 0.3 \newline-minp 300}
   \end{minipage}
-  \caption{ACJasmin example with cgal}
+  \caption{result of ACJasmin with cgal, data: ACJasmin\_Mesh.ply}
 \end{figure}  
 
 After the cgal version we tried the IRNIA version the result was still disapointing but better: 
@@ -437,7 +450,7 @@ After the cgal version we tried the IRNIA version the result was still disapoint
     \includegraphics[width=\textwidth]{../../images/screen_kinetic/ACJasmin_result_INRIA.png}
     \caption*{result}
   \end{minipage}
-  \caption{ACJasmin example with INRIA}
+  \caption{result of ACJasmin with cgal, data: ACJasmin\_Mesh.ply}
 \end{figure}  
 As we can see in those images the results we have from the 
 algorithm isnt really satisfactory we need to find a solution 
