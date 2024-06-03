@@ -80,12 +80,12 @@ The IFC format is a volume-based 3D representation , The file is very similar to
 However, a challenge we face is the difficulty in interpreting IFC objects for use in Kinetic programs. While there are several software solutions available to convert IFC to the desired format, 
 we often lose significant amounts of information in the process.
 
-As a result, we need to focus on refining the objects received from the converting process to ensure that Kinetic algorithms can effectively read the files.
+As a result, we need to focus on refining the objects received from the converting process to ensure that Kinetic algorithm can effectively read the files.
 
 \subsection{Kinetic}
 
-Kinetic algorithms(KSR) is a package from CGAL that allows working on meshes with 
-some holes in them. When applied to the mesh, the Kinetic algorithms will 'extend' some surfaces to fill the mesh and make it watertight. 
+Kinetic algorithm(KSR) is a package from CGAL that allows working on meshes with 
+some holes in them. When applied to the mesh, the Kinetic algorithm will 'extend' some surfaces to fill the mesh and make it watertight. 
 Here's what the algorithm is capable of:
 
 
@@ -101,7 +101,8 @@ Here's what the algorithm is capable of:
 We are using the most complete example of the cgal kinetic algorithm as base for our main. In this main we can change every parameters of the algorithm.
 \newline
 To use the algorithm we currently need to give him a file from supported format such as .ply , .off, .xyz, .las .
-We will try to change it to be able to read STL and MSH format but for now we can use the function read\_stl\_write\_xyz to transform the stl file.
+Our main is now able to read STL and MSH format but for now by transorming the point of the format in an xyz file,
+for now the result of this transformation is still bad because of the density of point given by the transformation compared to the density needed by the algorithm.
 If the parameters dont respect the critera we described in the previous section the algorithm can end up in segmentation fault.
 The result of the algorithm will be in an .off format in "resultat" folder.
 \newline
