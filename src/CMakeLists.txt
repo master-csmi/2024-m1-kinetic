@@ -1,4 +1,7 @@
 add_executable(kinetic main.cpp)
+
+find_package(CGAL COMPONENTS Qt5)
+
 target_link_libraries(
   kinetic
   PRIVATE project_options
